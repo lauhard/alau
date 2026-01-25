@@ -1,0 +1,48 @@
+{
+	"name": "alau",
+	"private": true,
+	"version": "0.0.1",
+	"type": "module",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "npm run build && wrangler dev",
+		"prepare": "svelte-kit sync || echo ''",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"test:unit": "vitest",
+		"test": "npm run test:unit -- --run && npm run test:e2e",
+		"test:e2e": "playwright test",
+		"db:push": "drizzle-kit push",
+		"db:generate": "drizzle-kit generate",
+		"db:migrate": "drizzle-kit migrate",
+		"db:studio": "drizzle-kit studio",
+		"deploy": "npm run build && wrangler deploy",
+		"cf-typegen": "wrangler types ./src/worker-configuration.d.ts"
+	},
+	"devDependencies": {
+		"@playwright/test": "^1.57.0",
+		"@sveltejs/adapter-auto": "^7.0.0",
+		"@sveltejs/adapter-cloudflare": "^7.2.6",
+		"@sveltejs/kit": "^2.49.1",
+		"@sveltejs/vite-plugin-svelte": "^6.2.1",
+		"@types/better-sqlite3": "^7.6.13",
+		"@types/node": "^22",
+		"@vitest/browser-playwright": "^4.0.15",
+		"drizzle-kit": "^0.31.8",
+		"drizzle-orm": "^0.45.0",
+		"mdsvex": "^0.12.6",
+		"playwright": "^1.57.0",
+		"svelte": "^5.45.6",
+		"svelte-check": "^4.3.4",
+		"typescript": "^5.9.3",
+		"vite": "^7.2.6",
+		"vite-plugin-devtools-json": "^1.0.0",
+		"vitest": "^4.0.15",
+		"vitest-browser-svelte": "^2.0.1",
+		"wrangler": "^4.60.0"
+	},
+	"dependencies": {
+		"better-sqlite3": "^12.5.0"
+	}
+}
