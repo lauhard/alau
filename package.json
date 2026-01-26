@@ -13,12 +13,18 @@
 		"test:unit": "vitest",
 		"test": "npm run test:unit -- --run && npm run test:e2e",
 		"test:e2e": "playwright test",
-		"db:push": "drizzle-kit push",
-		"db:generate": "drizzle-kit generate",
-		"db:migrate": "drizzle-kit migrate",
+		"db:push": "drizzle-kit push --config=drizzle.local.config.ts",
+		"db:generate": "drizzle-kit generate --config=drizzle.local.config.ts",
+		"db:migrate": "drizzle-kit migrate --config=drizzle.local.config.ts",
+		"db:cf-push": "drizzle-kit push --config=drizzle.d1.config.ts",
+		"db:cf-generate": "drizzle-kit generate --config=drizzle.d1.config.ts",
+		"db:cf-migrate": "drizzle-kit migrate --config=drizzle.d1.config.ts",
 		"db:studio": "drizzle-kit studio",
-		"deploy": "npm run build && wrangler deploy",
-		"cf-typegen": "wrangler types ./src/worker-configuration.d.ts"
+		"cf:deploy": "npm run build && npx wrangler deploy",
+		"cf:preview": "npm run build && npx wrangler dev",
+		"cf:typegen": "wrangler types ./src/worker-configuration.d.ts",
+		"ba:generate": "npx @better-auth/cli@latest generate --config ./src/lib/betterauth/auth.ts",
+		"ba:migrate": "npx @better-auth/cli@latest migrate --config ./src/lib/betterauth/auth.ts"
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.57.0",
@@ -43,6 +49,8 @@
 		"wrangler": "^4.60.0"
 	},
 	"dependencies": {
-		"better-sqlite3": "^12.5.0"
+		"better-auth": "^1.4.17",
+		"better-sqlite3": "^12.5.0",
+		"zod": "^4.3.6"
 	}
 }
