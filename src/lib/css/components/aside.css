@@ -1,0 +1,106 @@
+.aside-nav {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    height: 100svh;
+    width: 40svw;
+    min-width: 250px;
+    max-width: 350px;
+    background-color: var(--color-black-300);
+    z-index: 20;
+    transition: all 500ms ease-in-out;
+
+    .aside-nav-items {
+        position: relative;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 5rem;
+        align-items: center;
+        gap: .2rem;
+
+        .aside-nav-item,
+        .aside-nav-link {
+            min-height: 40px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .aside-nav-item {
+            width: 90%;
+        }
+
+        .aside-nav-item.active {
+            .aside-nav-link {
+                color: var(--color-ld-accent-500);
+                background-color: var(--color-black-400);
+            }
+        }
+
+        .aside-nav-link {
+            width: 100%;
+            display: flex;
+            flex-direction: row-reverse;
+            justify-self: right;
+            justify-content: end;
+            color: var(--color-white-500);
+            text-transform: uppercase;
+            letter-spacing: 0.09rem;
+            font-size: 0.9rem;
+            padding-right: 1rem;
+            text-decoration: none;
+            border-radius: 1rem;
+            transition: all var(--transition-base) ease-in-out;
+        }
+
+        .aside-nav-link:hover {
+            color: var(--color-ld-accent-500);
+            background-color: var(--color-black-400);
+            transition: all var(--transition-base) ease-in-out;
+        }
+    }
+
+    .btn-close {
+        color: var(--color-white-500);
+        border-color: var(--color-white-500);
+        border-width: 2px;
+        border-radius: 100vw;
+        width: 35px;
+        height: 35px;
+        padding: 0;
+        margin: 1rem;
+        position: absolute;
+
+        &:hover {
+            color: var(--color-ld-accent-500);
+            border-color: var(--color-ld-accent-500);
+        }
+    }
+}
+
+.aside-nav.right {
+    right: 0;
+    transform: translateX(350px);
+}
+
+.aside-nav.left {
+    left: 0;
+    transform: translateX(-350px);
+
+    .btn-close {
+        right: 0;
+    }
+
+    .aside-nav-link {
+        justify-self: left;
+        padding-left: 1rem;
+        flex-direction: row;
+        justify-content: start;
+    }
+}
+
+.aside-nav.open {
+    transform: translateX(0svw);
+    transition: all 500ms ease-in-out;
+}

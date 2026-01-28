@@ -1,0 +1,23 @@
+    .avatar {
+        position: fixed;
+        min-width: 100px;
+        width: fit-content;
+        display: flex;
+        z-index: 9999;
+
+        .btn-account {
+            padding: 0;
+            height: 80px;
+            width: 80px;
+            border: none;
+            color: var(--color-white-500);
+
+            &:hover {
+                color: var(--color-ld-accent-500);
+            }
+        }
+
+        .btn-login {
+            margin-top: 0.8rem;
+        }
+    }

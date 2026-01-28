@@ -5,8 +5,8 @@ import { local } from "./local";
 
 export type DBType = ReturnType<typeof d1> | ReturnType<typeof local>;
 // place files you want to import through the `$lib` alias in this folder.
-export const db = (platform: Platform): DBType => {
+export const dbInit = (platform: Platform): DBType => {
     console.log("DB Init:", isDev ? "Local" : "D1");
-    if (isDev) return local();
+    if (isDev) return local(platform);
     else return d1(platform);
 }

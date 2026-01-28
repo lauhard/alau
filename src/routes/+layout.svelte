@@ -1,11 +1,43 @@
 <script lang="ts">
-	import favicon from '$lib/assets/favicon.svg';
+	import "$lib/css/main.css";
+	import "$lib/css/component.css";
+	import favicon from "$lib/assets/favicon.svg";
+	import { type Snippet } from "svelte";
+	import Footer from "$lib/components/Footer.svelte";
+	import Header from "$lib/components/Header.svelte";
+	import { setUserState } from "$lib/state/user.svelte";
+	import type { User } from "$lib/betterauth/auth";
+	let { children, data } = $props<{
+		children: Snippet;
+		data: { user: User };
+	}>();
 
-	let { children } = $props();
+	let user = $derived(data.user);
+	let innerWidth = $state<number>(0);
+	let userState = setUserState(user);
+
+	$effect(() => {
+		userState?.update(user);
+	});
 </script>
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
 </svelte:head>
+<svelte:window bind:innerWidth />
 
-{@render children()}
+
+<div class="app">
+	<Header></Header>
+	<main>
+		{@render children()}
+	</main>
+	<Footer></Footer>
+</div>
+
+<style>
+	main {
+		max-width: var(--content-width);
+		padding-inline: var(--side);
+	}
+</style>
